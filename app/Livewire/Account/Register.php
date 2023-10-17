@@ -65,7 +65,7 @@ class Register extends Component implements HasForms
             password: $data['password'],
         );
 
-        if (Auth::attempt([
+        if (Auth::guard('accounts')->attempt([
             'agency_id' => $account->agency,
             'number' => $account->number,
             'password' => $data['password'],

@@ -18,6 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/counter', App\Livewire\Counter::class);
-Route::get('/home', App\Livewire\Counter::class)->name('home')->middleware('auth');
+Route::get('/home', App\Livewire\Counter::class)->name('home')->middleware('auth:accounts');
 Route::get('/account', App\Livewire\Account\Register::class)->name('login');
 
