@@ -18,6 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/counter', App\Livewire\Counter::class);
-Route::get('/home', App\Livewire\Counter::class)->name('home')->middleware('auth:accounts');
-Route::get('/account', App\Livewire\Account\Register::class)->name('login');
+
+Route::middleware('auth:accounts')->group(function(){
+    Route::get('/home', App\Livewire\Counter::class)->name('home');
+});
+
+Route::get('/account/login', App\Livewire\Account\Login::class)->name('login');
+Route::get('/account/register', App\Livewire\Account\Register::class)->name('register');
 
