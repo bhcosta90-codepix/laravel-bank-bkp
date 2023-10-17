@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->uuid('reference')->index();
             $table->string('name');
             $table->string('number');
+            $table->string('password');
+            $table->double('balance');
             $table->timestamps();
 
             $table->unique(['agency_id', 'number']);

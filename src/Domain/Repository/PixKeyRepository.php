@@ -29,12 +29,8 @@ class PixKeyRepository implements PixKeyRepositoryInterface
 
     public function addAccount(Account $account): void
     {
-        $this->account->create(
-            [
-                'id' => $account->id(),
-                'agency_id' => $account->agency,
-            ] + $account->toArray()
-        );
+        $data = $account->toArray();
+        $this->account->create($data + ['agency_id' => $data['agency']]);
     }
 
     public function findAccount(string $id): ?Account
