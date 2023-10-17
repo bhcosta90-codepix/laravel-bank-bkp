@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bhcosta90-codepix/package-bank.git",
-                "reference": "07976c57acc4756517d2acd0ddf6f68b81902b46"
+                "reference": "4c118ae8c838200ab0d4e6440788956f0b83c9cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bhcosta90-codepix/package-bank/zipball/07976c57acc4756517d2acd0ddf6f68b81902b46",
-                "reference": "07976c57acc4756517d2acd0ddf6f68b81902b46",
+                "url": "https://api.github.com/repos/bhcosta90-codepix/package-bank/zipball/4c118ae8c838200ab0d4e6440788956f0b83c9cd",
+                "reference": "4c118ae8c838200ab0d4e6440788956f0b83c9cd",
                 "shasum": ""
             },
             "require": {
@@ -57,20 +57,20 @@
                 "source": "https://github.com/bhcosta90-codepix/package-bank/tree/master",
                 "issues": "https://github.com/bhcosta90-codepix/package-bank/issues"
             },
-            "time": "2023-10-17T20:46:41+00:00"
+            "time": "2023-10-17T21:02:54+00:00"
         },
         {
             "name": "bhcosta90/clean-architecture",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bhcosta90/php-domain-package.git",
-                "reference": "4ed900d868efc4a701fcc6a7df62ba093728c2e3"
+                "reference": "379bc50840871e7e970784fb6d702a768662aeef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bhcosta90/php-domain-package/zipball/4ed900d868efc4a701fcc6a7df62ba093728c2e3",
-                "reference": "4ed900d868efc4a701fcc6a7df62ba093728c2e3",
+                "url": "https://api.github.com/repos/bhcosta90/php-domain-package/zipball/379bc50840871e7e970784fb6d702a768662aeef",
+                "reference": "379bc50840871e7e970784fb6d702a768662aeef",
                 "shasum": ""
             },
             "require": {
@@ -111,23 +111,23 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/bhcosta90/php-domain-package/tree/1.0.11",
+                "source": "https://github.com/bhcosta90/php-domain-package/tree/1.0.12",
                 "issues": "https://github.com/bhcosta90/php-domain-package/issues"
             },
-            "time": "2023-10-17T17:32:37+00:00"
+            "time": "2023-10-17T21:01:32+00:00"
         },
         {
             "name": "bhcosta90/entity",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bhcosta90/php-entity-package.git",
-                "reference": "ad403ab8c0a8929872103e3046d4e38dbf9c9be6"
+                "reference": "665515dd38f2e008cf9b543dca99e5e857c761ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bhcosta90/php-entity-package/zipball/ad403ab8c0a8929872103e3046d4e38dbf9c9be6",
-                "reference": "ad403ab8c0a8929872103e3046d4e38dbf9c9be6",
+                "url": "https://api.github.com/repos/bhcosta90/php-entity-package/zipball/665515dd38f2e008cf9b543dca99e5e857c761ab",
+                "reference": "665515dd38f2e008cf9b543dca99e5e857c761ab",
                 "shasum": ""
             },
             "require": {
@@ -164,10 +164,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/bhcosta90/php-entity-package/tree/1.0.11",
+                "source": "https://github.com/bhcosta90/php-entity-package/tree/1.0.12",
                 "issues": "https://github.com/bhcosta90/php-entity-package/issues"
             },
-            "time": "2023-10-17T17:30:45+00:00"
+            "time": "2023-10-17T21:00:14+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
