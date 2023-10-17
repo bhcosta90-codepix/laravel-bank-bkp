@@ -18,4 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/counter', App\Livewire\Counter::class);
+Route::get('/account', App\Livewire\Account\Register::class);
 
