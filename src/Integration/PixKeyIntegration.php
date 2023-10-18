@@ -6,6 +6,7 @@ namespace Bank\Integration;
 
 use CodePix\Bank\Application\integration\PixKeyIntegrationInterface;
 use CodePix\Bank\Application\Support\ResponseSupport;
+use Illuminate\Support\Facades\Http;
 
 class PixKeyIntegration implements PixKeyIntegrationInterface
 {
@@ -14,9 +15,23 @@ class PixKeyIntegration implements PixKeyIntegrationInterface
         return new ResponseSupport(200, (string)str()->uuid(), []);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function addAccount(string $bank, string $name, string $agency, string $number): ResponseSupport
     {
-        return new ResponseSupport(200, (string)str()->uuid(), []);
+        $response = Http::post(config('system.api.endpoint') . '/api/account', [
+            'bank' => $bank,
+            'name' => $name,
+            'agency' => $agency,
+            'number' => $number,
+        ]);
+
+        if ($response->status() === 201) {
+            return new ResponseSupport(200, $response->json('data.id'), []);
+        }
+
+        throw new \Exception();
     }
 
 }
