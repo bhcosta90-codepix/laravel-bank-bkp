@@ -46,7 +46,8 @@ class PixKeyRepository implements PixKeyRepositoryInterface
             ->count();
     }
 
-    public function getAgencyCode(string $id): string {
-        return Agency::find($id)->code;
+    public function getAgencyCode(string $id): ?string
+    {
+        return Agency::find($id)?->code;
     }
 }
