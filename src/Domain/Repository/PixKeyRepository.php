@@ -45,4 +45,8 @@ class PixKeyRepository implements PixKeyRepositoryInterface
             ->where('number', $number)
             ->count();
     }
+
+    public function getAgencyCode(string $id): string {
+        return Agency::find($id)->code;
+    }
 }
