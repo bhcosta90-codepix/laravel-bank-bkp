@@ -6,6 +6,7 @@ namespace Bank\Integration;
 
 use CodePix\Bank\Application\integration\PixKeyIntegrationInterface;
 use CodePix\Bank\Application\Support\ResponseSupport;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
 class PixKeyIntegration implements PixKeyIntegrationInterface
@@ -27,11 +28,19 @@ class PixKeyIntegration implements PixKeyIntegrationInterface
             'number' => $number,
         ]);
 
-        if ($response->status() === 201) {
-            return new ResponseSupport(200, $response->json('data.id'), []);
-        }
+        return match (true) {
+            $response->status() == 201 => new ResponseSupport(200, $response->json('data.id'), []),
+            400 && $response->json('message') => new ResponseSupport(200, $this->getId($response), []),
+            default => throw new \Exception(),
+        };
+    }
 
-        throw new \Exception();
+    public function getId(Response $response): mixed
+    {
+        $response = $response->json('message');
+        $data = explode(':', $response);
+
+        return trim(end($data));
     }
 
 }
