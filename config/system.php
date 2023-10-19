@@ -2,6 +2,6 @@
 
 return [
     'api' => [
-        'endpoint' => 'http://host.docker.internal:9100'
+        'endpoint' => 'http://host.docker.internal:7000'
     ]
 ];
