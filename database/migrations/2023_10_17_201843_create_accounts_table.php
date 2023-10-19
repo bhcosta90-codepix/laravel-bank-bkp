@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('number');
             $table->string('password');
-            $table->double('balance');
+            $table->double('balance')->default(0);
             $table->timestamps();
 
             $table->unique(['agency_id', 'number']);

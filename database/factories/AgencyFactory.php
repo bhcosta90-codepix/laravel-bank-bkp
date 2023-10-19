@@ -18,6 +18,7 @@ class AgencyFactory extends Factory
     {
         return [
             'id' => str()->uuid(),
+            'code' => '0001',
             'zipcode' => $this->faker->randomNumber(8),
             'state' => $this->faker->stateAbbr(),
             'city' => $this->faker->city(),

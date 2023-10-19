@@ -11,7 +11,7 @@ beforeEach(fn() => $this->agency = Agency::factory()->create(['code' => '0001'])
 
 describe("AccountController Unit Test", function(){
     test("store", function(){
-        postJson('/api/account', [
+        $response = postJson('/api/account', [
             'agency' => '0001',
             'name' => 'testing',
             'password' => 'testing-123456',
@@ -19,6 +19,7 @@ describe("AccountController Unit Test", function(){
         ]);
 
         assertDatabaseHas('accounts', [
+            'id' => $response->json('data.id'),
             'agency_id' => $this->agency->id,
             'name' => 'testing',
         ]);

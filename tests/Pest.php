@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Testing\TestResponse;
+use Mockery\MockInterface;
 
 uses(
     Tests\TestCase::class,
@@ -56,3 +57,25 @@ function trace(TestResponse $response){
         dump($trace, $response->json('message'));
     }
 }
+
+function mockAction(
+    MockInterface $response,
+    array $actions,
+): void {
+    foreach ($actions as $key => $action) {
+        $response = $response->shouldReceive($key);
+
+        if (!is_array($action)) {
+            $action = [
+                'action' => $action,
+            ];
+        }
+        if (!empty($action['with'])) {
+            $response->with($action['with']);
+        }
+
+        $response->andReturn($action['action']())
+            ->times($action['times'] ?? 1);
+    }
+}
+

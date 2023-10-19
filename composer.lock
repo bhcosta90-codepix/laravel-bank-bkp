@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bhcosta90-codepix/package-bank.git",
-                "reference": "51fb39ba68b58340e1cf0a7e2314f34578427de3"
+                "reference": "5c2cbe65564c4bb9b1a77416bf8836a45dfb4e31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bhcosta90-codepix/package-bank/zipball/51fb39ba68b58340e1cf0a7e2314f34578427de3",
-                "reference": "51fb39ba68b58340e1cf0a7e2314f34578427de3",
+                "url": "https://api.github.com/repos/bhcosta90-codepix/package-bank/zipball/5c2cbe65564c4bb9b1a77416bf8836a45dfb4e31",
+                "reference": "5c2cbe65564c4bb9b1a77416bf8836a45dfb4e31",
                 "shasum": ""
             },
             "require": {
@@ -57,7 +57,7 @@
                 "source": "https://github.com/bhcosta90-codepix/package-bank/tree/master",
                 "issues": "https://github.com/bhcosta90-codepix/package-bank/issues"
             },
-            "time": "2023-10-19T19:43:39+00:00"
+            "time": "2023-10-19T19:52:05+00:00"
         },
         {
             "name": "bhcosta90/clean-architecture",
