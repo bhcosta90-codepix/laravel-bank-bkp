@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Agency::factory()->create(['code' => '0001']);
+        Agency::factory()->hasAccounts(10)->create(['code' => '0001']);
     }
 }
