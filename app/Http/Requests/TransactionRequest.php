@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
+use CodePix\Bank\Domain\Entities\Enum\PixKey\KindPixKey;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rules\Enum;
 
-class AccountRequest extends FormRequest
+class TransactionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +24,10 @@ class AccountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'agency' => 'required',
-            'name' => 'required|min:3|max:100',
-            'password' => ['required', Password::default(), "min:4", "confirmed"],
+            'description' => 'required',
+            'kind' => ['required', new Enum(KindPixKey::class)],
+            'key' => 'required',
+            'value' => ['required', 'numeric', 'min:0.01'],
         ];
     }
 }

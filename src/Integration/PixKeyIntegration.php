@@ -6,7 +6,6 @@ namespace Bank\Integration;
 
 use CodePix\Bank\Application\Integration\PixKeyIntegrationInterface;
 use CodePix\Bank\Application\Integration\Response\ResponseKeyValueOutput;
-use CodePix\Bank\Application\Support\ResponseSupport;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
 

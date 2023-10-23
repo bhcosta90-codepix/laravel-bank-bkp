@@ -16,7 +16,7 @@ use Mockery\MockInterface;
 
 uses(
     Tests\TestCase::class,
-     Illuminate\Foundation\Testing\RefreshDatabase::class,
+    Illuminate\Foundation\Testing\RefreshDatabase::class,
 )->in('Feature');
 
 /*
@@ -50,8 +50,9 @@ function something()
     // ..
 }
 
-function trace(TestResponse $response){
-    if($response->status() == 500) {
+function trace(TestResponse $response)
+{
+    if ($response->status() == 500) {
         $trace = $response->json('trace');
         krsort($trace);
         dump($trace, $response->json('message'));

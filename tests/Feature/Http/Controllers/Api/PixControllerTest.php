@@ -3,14 +3,9 @@
 declare(strict_types=1);
 
 use App\Models\Account;
-
-use CodePix\Bank\Application\Integration\PixKeyIntegrationInterface;
-
-use CodePix\Bank\Application\Support\ResponseSupport;
-use Tests\Stubs\Integration\PixKeyIntegration;
+use CodePix\Bank\Application\Integration\Response\ResponseKeyValueOutput;
 
 use function Pest\Laravel\assertDatabaseHas;
-use function Pest\Laravel\postJson;
 
 beforeEach(function () {
     $this->account = Account::factory()->create();
@@ -20,10 +15,10 @@ describe("PixController Unit Test", function () {
     test("store", function () {
         $mockintegration = mock(\Bank\Integration\PixKeyIntegration::class);
 
-        $id = (string) str()->uuid();
+        $id = (string)str()->uuid();
 
         mockAction($mockintegration, [
-            'register' => fn() => new ResponseSupport(200, $id, null),
+            'register' => fn() => new ResponseKeyValueOutput($id, "test@test.com", 200),
         ]);
 
         app()->instance(\Bank\Integration\PixKeyIntegration::class, $mockintegration);

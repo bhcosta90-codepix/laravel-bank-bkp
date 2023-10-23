@@ -9,8 +9,8 @@ use function Pest\Laravel\postJson;
 
 beforeEach(fn() => $this->agency = Agency::factory()->create(['code' => '0001']));
 
-describe("AccountController Unit Test", function(){
-    test("store", function(){
+describe("AccountController Unit Test", function () {
+    test("store", function () {
         $response = postJson('/api/account', [
             'agency' => '0001',
             'name' => 'testing',
