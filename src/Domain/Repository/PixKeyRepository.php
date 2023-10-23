@@ -8,8 +8,10 @@ use App\Models\Account as ModelAlias;
 use App\Models\Agency;
 use BRCas\CA\ValueObject\Password;
 use CodePix\Bank\Domain\Entities\Account;
+use CodePix\Bank\Domain\Entities\Enum\PixKey\KindPixKey;
 use CodePix\Bank\Domain\Entities\PixKey;
 use CodePix\Bank\Domain\Repository\PixKeyRepositoryInterface;
+use Costa\Entity\ValueObject\Uuid;
 
 class PixKeyRepository implements PixKeyRepositoryInterface
 {
@@ -32,9 +34,31 @@ class PixKeyRepository implements PixKeyRepositoryInterface
         ]);
     }
 
-    public function findKeyByKind(string $key, string $kind): ?PixKey
+    public function findKeyByKind(string $kind, string $key): ?PixKey
     {
-        throw new \Exception();
+        $bank = [
+            'bank' => config('bank.id'),
+        ];
+
+        if ($pix = \App\Models\PixKey::where('key', $key)->where('kind', $kind)->first()) {
+            $account = $pix->account;
+
+            $account = Account::make(
+                [
+                    'password' => new Password($account->password),
+                    'agency' => new Uuid($account->agency_id),
+                ] + $account->toArray() + $bank
+            );
+
+            return PixKey::make(
+                [
+                    'account' => $account,
+                    'kind' => KindPixKey::from($pix->kind),
+                ] + $bank + $pix->toArray()
+            );
+        }
+
+        return null;
     }
 
     public function addAccount(Account $account): void

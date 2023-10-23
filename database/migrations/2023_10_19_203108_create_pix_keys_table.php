@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('pix_keys', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('reference');
             $table->foreignUuid('account_id')->on('accounts');
+            $table->uuid('reference');
             $table->string('kind');
             $table->string('key');
             $table->timestamps();
