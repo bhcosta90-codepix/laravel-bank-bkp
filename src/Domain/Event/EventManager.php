@@ -9,9 +9,8 @@ use BRCas\CA\Contracts\Event\EventManagerInterface;
 
 class EventManager implements EventManagerInterface
 {
-    public function dispatch(EventInterface $event)
+    public function dispatch(array $event): void
     {
         dd('Implement dispatch() method.');
     }
-
 }
