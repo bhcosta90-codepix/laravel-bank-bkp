@@ -39,6 +39,7 @@ class RabbitMQService implements AMQPInterface, RabbitMQInterface
                 function ($message, $resolver) use ($queue, $clojure) {
                     try {
                         $clojure($message->body);
+                        $resolver->acknowledge($message);
                     } catch (Throwable $e) {
                         Log::error("Error consumer {$queue}: " . $e->getMessage() . json_encode($e->getTrace()));
                     }
