@@ -15,6 +15,11 @@ class TransactionRepository implements TransactionRepositoryInterface
         return $this->register($transaction, TypeTransactionEnum::DEBIT);
     }
 
+    public function registerCredit(Transaction $transaction): bool
+    {
+        return $this->register($transaction, TypeTransactionEnum::CREDIT);
+    }
+
     public function save(Transaction $transaction): bool
     {
         dd('Implement save() method.');
@@ -36,8 +41,8 @@ class TransactionRepository implements TransactionRepositoryInterface
             'account_id' => $transaction->accountFrom->id(),
             'value' => $transaction->value,
             'type' => $type,
-            'kind' => $transaction->pixKeyTo->kind,
-            'key' => $transaction->pixKeyTo->key,
+            'kind' => $transaction->kind,
+            'key' => $transaction->key,
             'description' => $transaction->description,
             'status' => $transaction->status,
         ]);

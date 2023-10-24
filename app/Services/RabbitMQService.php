@@ -14,14 +14,19 @@ class RabbitMQService implements AMQPInterface, RabbitMQInterface
 {
     public function publish($name, array $value = []): void
     {
-        $appName = config('app.name');
-        Amqp::publish($appName . "." . $name, json_encode($value));
+        Amqp::publish($name, json_encode(['bank' => (string)config('bank.id')] + $value));
     }
 
     public function consume(string $queue, string|array $routing, $clojure, $custom = []): void
     {
+        $bank = ((string)config('bank.id')) . ".";
+
         if (is_string($routing)) {
             $routing = [$routing];
+        }
+
+        foreach ($routing as $key => $value) {
+            $routing[$key] = $bank . $value;
         }
 
         $routing = [
@@ -29,14 +34,18 @@ class RabbitMQService implements AMQPInterface, RabbitMQInterface
         ];
 
         do {
-            Amqp::consume($queue, function ($message, $resolver) use ($queue, $clojure) {
-                try {
-                    $clojure($message->body);
-                } catch (Throwable $e) {
-                    Log::error("Error consumer {$queue}: " . $e->getMessage() . json_encode($e->getTrace()));
-                }
-                $resolver->stopWhenProcessed();
-            }, $custom + $routing);
+            Amqp::consume(
+                $bank . $queue,
+                function ($message, $resolver) use ($queue, $clojure) {
+                    try {
+                        $clojure($message->body);
+                    } catch (Throwable $e) {
+                        Log::error("Error consumer {$queue}: " . $e->getMessage() . json_encode($e->getTrace()));
+                    }
+                    $resolver->stopWhenProcessed();
+                },
+                $custom + $routing
+            );
             sleep(10);
         } while (true);
     }

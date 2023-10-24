@@ -2,7 +2,7 @@
 
 namespace App\Listeners\Transaction;
 
-use App\Services\AMQPInterface;
+use App\Services\Interfaces\AMQPInterface;
 use CodePix\Bank\Domain\Events\Transaction\CreateEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
