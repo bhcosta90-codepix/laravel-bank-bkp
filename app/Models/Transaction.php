@@ -19,5 +19,6 @@ class Transaction extends Model
         'key',
         'description',
         'status',
+        'debit_id',
     ];
 }

@@ -45,6 +45,7 @@ class TransactionRepository implements TransactionRepositoryInterface
             'key' => $transaction->key,
             'description' => $transaction->description,
             'status' => $transaction->status,
+            'debit_id' => $transaction->debit,
         ]);
     }
 
