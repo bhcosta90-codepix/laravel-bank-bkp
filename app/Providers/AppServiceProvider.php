@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\AMQPInterface;
+use App\Services\RabbitMQService;
 use Bank\Domain\Event\EventManager;
 use BRCas\CA\Contracts\Event\EventManagerInterface;
 use Illuminate\Support\ServiceProvider;
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $this->app->singleton(EventManagerInterface::class, EventManager::class);
+        $this->app->singleton(AMQPInterface::class, RabbitMQService::class);
     }
 
     /**
