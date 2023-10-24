@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3cf95201219d9d025515a4e7fa268a4",
+    "content-hash": "10854f61b7197522744679d9d1fa30f7",
     "packages": [
         {
             "name": "bhcosta90-codepix/package-bank",
-            "version": "dev-develop",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bhcosta90-codepix/package-bank.git",
-                "reference": "45904e2372602a3a6d90e35d271b743b7d7e6f14"
+                "reference": "5850fc891be64ff9f22da7b6e60c7281f31a5175"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bhcosta90-codepix/package-bank/zipball/45904e2372602a3a6d90e35d271b743b7d7e6f14",
-                "reference": "45904e2372602a3a6d90e35d271b743b7d7e6f14",
+                "url": "https://api.github.com/repos/bhcosta90-codepix/package-bank/zipball/5850fc891be64ff9f22da7b6e60c7281f31a5175",
+                "reference": "5850fc891be64ff9f22da7b6e60c7281f31a5175",
                 "shasum": ""
             },
             "require": {
@@ -30,6 +30,7 @@
                 "pestphp/pest": "^2.23",
                 "symfony/var-dumper": "^6.3"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -53,10 +54,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/bhcosta90-codepix/package-bank/tree/develop",
+                "source": "https://github.com/bhcosta90-codepix/package-bank/tree/master",
                 "issues": "https://github.com/bhcosta90-codepix/package-bank/issues"
             },
-            "time": "2023-10-24T12:32:19+00:00"
+            "time": "2023-10-24T13:16:43+00:00"
         },
         {
             "name": "bhcosta90/clean-architecture",
