@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('account_id')->on('accounts');
+            $table->uuid('debit_id')->nullable();
             $table->unsignedDouble('value');
             $table->unsignedTinyInteger('type');
             $table->string('kind');

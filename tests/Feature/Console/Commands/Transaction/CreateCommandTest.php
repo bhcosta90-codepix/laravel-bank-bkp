@@ -30,6 +30,7 @@ describe("CreateCommand Feature Test", function () {
             'key' => '6860b687-a250-4154-8a55-3d603af2e916',
             'description' => 'testing',
             'status' => 'pending',
+            'debit_id' => '018b62ae-c382-72b8-92c4-ad1adfb599bc',
             'cancel_description' => null,
         ]);
     });
