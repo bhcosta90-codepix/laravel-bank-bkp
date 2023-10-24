@@ -13,6 +13,7 @@ class TransactionRepository implements TransactionRepositoryInterface
     public function registerDebit(Transaction $transaction): bool
     {
         return (bool) \App\Models\Transaction::create([
+            'id' => $transaction->id(),
             'account_id' => $transaction->accountFrom->id(),
             'value' => $transaction->value,
             'type' => TypeTransactionEnum::DEBIT,

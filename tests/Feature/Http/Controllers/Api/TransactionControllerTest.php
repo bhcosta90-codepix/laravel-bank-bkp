@@ -22,6 +22,14 @@ describe("TransactionController Unit Test", function () {
             'key' => (string) $this->pix->key,
         ]);
 
-        trace($response);
+        assertDatabaseHas('transactions', [
+            'id' => $response->json('data.id'),
+            'account_id' => $this->account->id,
+            'value' => 10,
+            'type' => 1,
+            'kind' => $this->pix->kind->value,
+            'key' => $this->pix->key,
+            'description' => 'testing',
+        ]);
     });
 });
