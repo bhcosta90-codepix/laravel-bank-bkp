@@ -10,8 +10,6 @@
     "require": {
         "php": "^8.1",
         "bhcosta90-codepix/package-bank": "dev-develop",
-        "bhcosta90/clean-architecture": "^1.0",
-        "bhcosta90/entity": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",

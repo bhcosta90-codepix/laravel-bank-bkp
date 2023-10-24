@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Bank\Domain\Event;
 
-use BRCas\CA\Contracts\Event\EventInterface;
 use BRCas\CA\Contracts\Event\EventManagerInterface;
 
 class EventManager implements EventManagerInterface
 {
-    public function dispatch(array $event): void
+    public function dispatch(array $events): void
     {
-        dd('Implement dispatch() method.');
+        foreach ($events as $value) {
+            event($value);
+        }
     }
 }
