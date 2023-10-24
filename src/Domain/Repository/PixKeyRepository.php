@@ -67,9 +67,13 @@ class PixKeyRepository implements PixKeyRepositoryInterface
         $this->account->create($data + ['agency_id' => $data['agency']]);
     }
 
-    public function findAccount(string $id): ?Account
+    public function findAccount(string $id, bool $locked): ?Account
     {
-        if ($account = \App\Models\Account::find($id)) {
+        $account = $locked
+            ? \App\Models\Account::lockForUpdate()->find($id)
+            : \App\Models\Account::find($id);
+
+        if ($account) {
             return Account::make(
                 [
                     'bank' => config('bank.id'),
@@ -80,6 +84,13 @@ class PixKeyRepository implements PixKeyRepositoryInterface
         }
 
         return null;
+    }
+
+    public function updateAccount(Account $account): bool
+    {
+        return \App\Models\Account::find($account->id())->update([
+            'balance' => $account->balance,
+        ]);
     }
 
     public function verifyNumber(string $agency, string $number): bool
