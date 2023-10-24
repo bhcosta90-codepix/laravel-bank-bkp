@@ -10,5 +10,14 @@ class Transaction extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'id',
+        'account_id',
+        'value',
+        'type',
+        'kind',
+        'key',
+        'description',
+        'status',
+    ];
 }
