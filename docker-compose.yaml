@@ -13,6 +13,21 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
+  app2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "7101:8000"
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    environment:
+      - DB_DATABASE=/var/www/html/database/database2.sqlite
+      - BANK_ID=f29a74e8-41fd-41e9-a9ba-5500f654ee79
+
   transaction_create:
     build:
       context: .
@@ -23,7 +38,21 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     command: php artisan transaction:create
-#
+
+  transaction_create2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/var/www/html
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    command: php artisan transaction:create
+    environment:
+      - DB_DATABASE=/var/www/html/database/database2.sqlite
+      - BANK_ID=f29a74e8-41fd-41e9-a9ba-5500f654ee79
+
   transaction_confirmation:
     build:
       context: .
@@ -35,6 +64,20 @@ services:
       - 'host.docker.internal:host-gateway'
     command: php artisan transaction:confirmation
 
+  transaction_confirmation2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/var/www/html
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    command: php artisan transaction:confirmation
+    environment:
+      - DB_DATABASE=/var/www/html/database/database2.sqlite
+      - BANK_ID=f29a74e8-41fd-41e9-a9ba-5500f654ee79
+
   transaction_error:
     build:
       context: .
@@ -45,3 +88,17 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     command: php artisan transaction:error
+
+  transaction_error2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    volumes:
+      - .:/var/www/html
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    command: php artisan transaction:error
+    environment:
+      - DB_DATABASE=/var/www/html/database/database2.sqlite
+      - BANK_ID=f29a74e8-41fd-41e9-a9ba-5500f654ee79
