@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Listeners\Transaction\CompletedListener;
 use App\Listeners\Transaction\ConfirmedListener;
 use App\Listeners\Transaction\CreateListener;
+use CodePix\Bank\Domain\Events\Transaction\CompletedEvent;
 use CodePix\Bank\Domain\Events\Transaction\ConfirmedEvent;
 use CodePix\Bank\Domain\Events\Transaction\CreateEvent;
 use Illuminate\Auth\Events\Registered;
@@ -26,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ConfirmedEvent::class => [
             ConfirmedListener::class,
+        ],
+        CompletedEvent::class => [
+            CompletedListener::class,
         ],
     ];
 
