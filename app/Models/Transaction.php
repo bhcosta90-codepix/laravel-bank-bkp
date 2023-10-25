@@ -21,6 +21,7 @@ class Transaction extends Model
         'description',
         'status',
         'debit_id',
+        'cancel_description',
     ];
 
     public function account(): BelongsTo

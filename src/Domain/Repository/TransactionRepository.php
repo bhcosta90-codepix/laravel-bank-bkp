@@ -32,6 +32,7 @@ class TransactionRepository implements TransactionRepositoryInterface
         if($rs = \App\Models\Transaction::find($transaction->id())){
             return $rs->update([
                 'status' => $transaction->status->value,
+                'cancel_description' => $transaction->cancelDescription,
             ]);
         }
 
