@@ -5,8 +5,13 @@ declare(strict_types=1);
 namespace Bank\Domain\Repository;
 
 use App\Models\Enum\Transaction\TypeTransactionEnum;
+use BRCas\CA\ValueObject\Password;
+use CodePix\Bank\Domain\Entities\Account;
+use CodePix\Bank\Domain\Entities\Enum\PixKey\KindPixKey;
+use CodePix\Bank\Domain\Entities\Enum\Transaction\StatusTransaction;
 use CodePix\Bank\Domain\Entities\Transaction;
 use CodePix\Bank\Domain\Repository\TransactionRepositoryInterface;
+use Costa\Entity\ValueObject\Uuid;
 
 class TransactionRepository implements TransactionRepositoryInterface
 {
@@ -22,12 +27,34 @@ class TransactionRepository implements TransactionRepositoryInterface
 
     public function save(Transaction $transaction): bool
     {
-        dd('Implement save() method.');
+        if($rs = \App\Models\Transaction::find($transaction->id())){
+            return $rs->update([
+                'status' => $transaction->status->value,
+            ]);
+        }
+
+        return false;
     }
 
     public function find(string $id): ?Transaction
     {
-        dd('Implement find() method.');
+        if($transaction = \App\Models\Transaction::find($id)){
+
+            $dataAccount = [
+                'bank' => config('bank.id'),
+                'agency' => new Uuid($transaction->account->agency_id),
+                'password' => new Password($transaction->account->password),
+            ];
+
+            $data = [
+                'kind' => KindPixKey::from($transaction->kind),
+                'status' => StatusTransaction::from($transaction->status),
+                'accountFrom' => Account::make($dataAccount + $transaction->account->toArray()),
+            ];
+            return Transaction::make($data + $transaction->toArray());
+        }
+
+        return null;
     }
 
     /**

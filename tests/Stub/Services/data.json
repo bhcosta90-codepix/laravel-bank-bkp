@@ -20,5 +20,9 @@
         "id": "018b6337-eeaa-725c-a216-aa2f709ea72c",
         "created_at": "2023-10-24 16:44:51",
         "updated_at": "2023-10-24 16:44:51"
+    },
+    "transaction:confirmation": {
+        "bank": "ea9b5815-1b04-4d34-87e1-16da2787a3bb",
+        "id": "018b66cb-a1c2-73d4-af03-8656e51bf710"
     }
 }

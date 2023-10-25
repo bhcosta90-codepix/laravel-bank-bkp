@@ -32,5 +32,10 @@ describe("CreateCommand Feature Test", function () {
             'debit_id' => '018b6333-434c-702b-b514-02de403e1fde',
             'cancel_description' => null,
         ]);
+
+        assertDatabaseHas('accounts', [
+            'id' => '018b6333-2612-713c-8b6d-6e7574f2c727',
+            'balance' => 10,
+        ]);
     });
 });

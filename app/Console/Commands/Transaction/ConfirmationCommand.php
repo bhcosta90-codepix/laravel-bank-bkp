@@ -32,7 +32,7 @@ class ConfirmationCommand extends Command
             "transaction.confirmation",
             function ($message) use ($transactionUseCase) {
                 $data = json_decode($message, true);
-                dump($data);
+                $transactionUseCase->confirmTransaction($data['id']);
             }
         );
     }
