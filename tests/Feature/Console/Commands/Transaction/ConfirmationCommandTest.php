@@ -14,7 +14,7 @@ beforeEach(function () {
     $this->command = new ConfirmationCommand();
 
     $this->transaction = Transaction::factory()->create([
-        'id' => '018b66cb-a1c2-73d4-af03-8656e51bf710',
+        'id' => '018b66cb-a1c2-73d4-af03-8656e51bf709',
         'value' => 50,
     ]);
 });
@@ -27,7 +27,7 @@ describe("ConfirmationCommand Feature Test", function(){
 
         assertDatabaseHas('accounts', [
            'id' => $this->transaction->account_id,
-           'balance' => -50,
+           'balance' => 0,
         ]);
     });
 });

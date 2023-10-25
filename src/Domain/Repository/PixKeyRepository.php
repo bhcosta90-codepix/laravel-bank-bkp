@@ -45,13 +45,14 @@ class PixKeyRepository implements PixKeyRepositoryInterface
             : \App\Models\PixKey::where('key', $key)->where('kind', $kind)->first();
 
         if ($pix) {
-            $account = $pix->account;
+            $accountDb = $pix->account;
 
             $account = Account::make(
                 [
-                    'password' => new Password($account->password),
-                    'agency' => new Uuid($account->agency_id),
-                ] + $account->toArray() + $bank
+                    'password' => new Password($accountDb->password),
+                    'agency' => new Uuid($accountDb->agency_id),
+                    'balance' => $accountDb->balance,
+                ] + $accountDb->toArray() + $bank
             );
 
             return PixKey::make(
@@ -81,7 +82,7 @@ class PixKeyRepository implements PixKeyRepositoryInterface
             return Account::make(
                 [
                     'bank' => config('bank.id'),
-                    'agency' => $account->agency->id,
+                    'agency' => new Uuid($account->agency->id),
                     'password' => new Password($account->password),
                 ] + $account->toArray()
             );
