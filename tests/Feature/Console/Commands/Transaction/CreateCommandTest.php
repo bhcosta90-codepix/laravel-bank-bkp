@@ -33,7 +33,7 @@ describe("CreateCommand Feature Test", function () {
         $this->command->handle(new RabbitMQService("transaction:create"));
 
         assertDatabaseHas('transactions', [
-            'account_id' => '018b6333-2612-713c-8b6d-6e7574f2c727',
+            'account_id' => '9a7246c5-2840-46f2-b9a2-9b5ab68832a9',
             'value' => 10,
             'type' => 0,
             'kind' => 'id',
