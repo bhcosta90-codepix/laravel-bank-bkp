@@ -208,26 +208,6 @@
 			"key": "host",
 			"value": "http://localhost:7100",
 			"type": "string"
-		},
-		{
-			"key": "account",
-			"value": ""
-		},
-		{
-			"key": "account_from",
-			"value": ""
-		},
-		{
-			"key": "kind",
-			"value": ""
-		},
-		{
-			"key": "key",
-			"value": ""
-		},
-		{
-			"key": "transaction",
-			"value": ""
 		}
 	]
 }
