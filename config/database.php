@@ -6,12 +6,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Database Connection Name
+    | Default TransactionInterface Connection Name
     |--------------------------------------------------------------------------
     |
     | Here you may specify which of the database connections below you wish
     | to use as your default connection for all database work. Of course
-    | you may use many connections at once using the Database library.
+    | you may use many connections at once using the TransactionInterface library.
     |
     */
 
@@ -19,7 +19,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Database Connections
+    | TransactionInterface Connections
     |--------------------------------------------------------------------------
     |
     | Here are each of the database connections setup for your application.
@@ -114,7 +114,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Redis is an open source, fast, and advanced key-value store that also
-    | provides a richer body of commands than a typical key-value system
+    | provides a richer body of commands than a typical key-value system.php
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
@@ -125,7 +125,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

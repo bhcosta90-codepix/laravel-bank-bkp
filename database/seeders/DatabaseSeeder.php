@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Illuminate\TransactionInterface\Console\Seeds\WithoutModelEvents;
 use App\Models\Agency;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Agency::factory()->create();
+        Agency::factory()->create(['code' => '0001']);
     }
 }

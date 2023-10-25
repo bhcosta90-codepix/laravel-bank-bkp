@@ -13,11 +13,10 @@ return new class extends Migration {
         Schema::create('accounts', function (Blueprint $table) {
             $table->uuid('id');
             $table->foreignUuid('agency_id')->on('agencies');
-            $table->uuid('reference')->index();
             $table->string('name');
             $table->string('number');
             $table->string('password');
-            $table->double('balance');
+            $table->double('balance')->default(0);
             $table->timestamps();
 
             $table->unique(['agency_id', 'number']);
