@@ -22,7 +22,7 @@ class ConfirmedListener
      */
     public function handle(ConfirmedEvent $event): void
     {
-        $this->AMQP->publish('transaction.confirmed', [
+        $this->AMQP->publish('transaction.confirmation', [
             'id' => $event->payload()['id'],
         ]);
     }

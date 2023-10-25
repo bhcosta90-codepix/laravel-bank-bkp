@@ -33,7 +33,7 @@ class CreateCommand extends Command
             function ($message) use ($transactionUseCase) {
                 $data = json_decode($message, true);
                 $transactionUseCase->registerCredit(
-                    debit: $data['id'],
+                    debit: $data['debit'],
                     account: $data['account_from'],
                     value: $data['value'],
                     kind: $data['pix_key_to']['kind'],
