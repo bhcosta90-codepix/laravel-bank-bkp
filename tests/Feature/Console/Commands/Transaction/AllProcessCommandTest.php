@@ -41,7 +41,7 @@ beforeEach(function(){
 describe("Testing all commands to transaction", function () {
     test("handle", function () {
         $commandCreate = new CreateCommand();
-        $commandCreate->handle(new RabbitMQService("transaction:create"), app(TransactionUseCase::class));
+        $commandCreate->handle(new RabbitMQService("transaction:create"));
 
         assertDatabaseHas(Account::class, [
             'id' => '9a7246c5-2840-46f2-b9a2-9b5ab68832a9',
@@ -49,7 +49,7 @@ describe("Testing all commands to transaction", function () {
         ]);
 
         $commandConfirmation = new ConfirmationCommand();
-        $commandConfirmation->handle(new RabbitMQService("transaction:confirmation"), app(TransactionUseCase::class));
+        $commandConfirmation->handle(new RabbitMQService("transaction:confirmation"));
 
         assertDatabaseHas(Account::class, [
             'id' => '018b6333-2612-713c-8b6d-6e7574f2c727',

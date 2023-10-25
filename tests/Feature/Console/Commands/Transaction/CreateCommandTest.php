@@ -30,7 +30,7 @@ beforeEach(function () {
 
 describe("CreateCommand Feature Test", function () {
     test("handle", function () {
-        $this->command->handle(new RabbitMQService("transaction:create"), app(TransactionUseCase::class));
+        $this->command->handle(new RabbitMQService("transaction:create"));
 
         assertDatabaseHas('transactions', [
             'account_id' => '018b6333-2612-713c-8b6d-6e7574f2c727',

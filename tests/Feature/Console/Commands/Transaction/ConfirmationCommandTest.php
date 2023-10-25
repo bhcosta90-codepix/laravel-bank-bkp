@@ -20,7 +20,7 @@ beforeEach(function () {
 });
 describe("ConfirmationCommand Feature Test", function(){
     test("handle", function(){
-        $this->command->handle(new RabbitMQService("transaction:confirmation"), app(TransactionUseCase::class));
+        $this->command->handle(new RabbitMQService("transaction:confirmation"));
         assertDatabaseHas('transactions', [
             'status' => 'completed',
         ]);
