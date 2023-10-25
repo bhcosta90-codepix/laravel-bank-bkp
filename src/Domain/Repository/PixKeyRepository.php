@@ -34,13 +34,17 @@ class PixKeyRepository implements PixKeyRepositoryInterface
         ]);
     }
 
-    public function findKeyByKind(string $kind, string $key): ?PixKey
+    public function findKeyByKind(string $kind, string $key, $locked = false): ?PixKey
     {
         $bank = [
             'bank' => config('bank.id'),
         ];
 
-        if ($pix = \App\Models\PixKey::where('key', $key)->where('kind', $kind)->first()) {
+        $pix = $locked
+            ? \App\Models\PixKey::lockForUpdate()->where('key', $key)->where('kind', $kind)->first()
+            : \App\Models\PixKey::where('key', $key)->where('kind', $kind)->first();
+
+        if ($pix) {
             $account = $pix->account;
 
             $account = Account::make(
