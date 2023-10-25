@@ -24,7 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('account')->group(function () {
     Route::post('', [AccountController::class, 'store']);
     Route::post('/{account}/pix', [PixKeyController::class, 'store']);
+    Route::get('/{account}/transaction', [TransactionController::class, 'index']);
     Route::post('/{account}/transaction', [TransactionController::class, 'store']);
+    Route::get('/{account}/transaction/{transaction}', [TransactionController::class, 'show']);
 });
 
 Route::prefix('transaction')->group(function () {

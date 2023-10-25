@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Bank\Domain\Repository;
 
 use App\Models\Enum\Transaction\TypeTransactionEnum;
+use App\Models\Presenters\PaginationPresenter;
+use BRCas\CA\Contracts\Items\PaginationInterface;
 use BRCas\CA\ValueObject\Password;
 use CodePix\Bank\Domain\Entities\Account;
 use CodePix\Bank\Domain\Entities\Enum\PixKey\KindPixKey;
@@ -75,5 +77,15 @@ class TransactionRepository implements TransactionRepositoryInterface
             'debit_id' => $transaction->debit,
         ]);
     }
+
+    public function getAll(string $account): PaginationInterface
+    {
+        $result = \App\Models\Transaction::where('account_id', $account)
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+
+        return new PaginationPresenter($result);
+    }
+
 
 }
