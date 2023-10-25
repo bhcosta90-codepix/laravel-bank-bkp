@@ -23,10 +23,10 @@
 					"script": {
 						"exec": [
 							"if (pm.response.status === \"Created\") {",
-							"    pm.environment.set(\"account\", pm.response.json().data.id);",
+							"    pm.collectionVariables.set(\"account\", pm.response.json().data.id);",
 							"",
-							"    if(pm.environment.get(\"account_from\") == null){",
-							"        pm.environment.set(\"account_from\", pm.response.json().data.id);",
+							"    if(pm.collectionVariables.get(\"account_from\") == null){",
+							"        pm.collectionVariables.set(\"account_from\", pm.response.json().data.id);",
 							"    }",
 							"}"
 						],
@@ -83,8 +83,8 @@
 					"script": {
 						"exec": [
 							"if (pm.response.status === \"Created\") {",
-							"    pm.environment.set(\"kind\", pm.response.json().data.kind);",
-							"    pm.environment.set(\"key\", pm.response.json().data.key);",
+							"    pm.collectionVariables.set(\"kind\", pm.response.json().data.kind);",
+							"    pm.collectionVariables.set(\"key\", pm.response.json().data.key);",
 							"}"
 						],
 						"type": "text/javascript"
@@ -141,7 +141,7 @@
 					"script": {
 						"exec": [
 							"if (pm.response.status === \"Created\") {",
-							"    pm.environment.set(\"transaction\", pm.response.json().data.id);",
+							"    pm.collectionVariables.set(\"transaction\", pm.response.json().data.id);",
 							"}"
 						],
 						"type": "text/javascript"
@@ -373,7 +373,7 @@
 					"script": {
 						"exec": [
 							"if (pm.response.status === \"Created\") {",
-							"    pm.environment.set(\"transaction\", pm.response.json().data.id);",
+							"    pm.collectionVariables.set(\"transaction\", pm.response.json().data.id);",
 							"}"
 						],
 						"type": "text/javascript"
@@ -412,6 +412,90 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Cadastro de transação - outro banco",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.status === \"Created\") {",
+							"    pm.collectionVariables.set(\"transaction\", pm.response.json().data.id);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"testing\",\n    \"value\": 50,\n    \"kind\": \"email\",\n    \"key\": \"test@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/account/{{account}}/transaction",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"account",
+						"{{account}}",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:7100",
+			"type": "string"
 		}
 	]
 }
