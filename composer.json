@@ -75,7 +75,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/bhcosta90-codepix/package-bank"
+            "url": "https://github.com/bhcosta90-codepix/php-package-bank"
         },
         {
             "type": "vcs",
